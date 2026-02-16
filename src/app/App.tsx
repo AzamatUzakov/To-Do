@@ -2,11 +2,9 @@ import Header from "../widgets/Header";
 
 function App() {
   return (
-    <>
-
-    <Header/>
-      <h1 className="text-2xl font-bold text-blue-500">Hello</h1>
-    </>
+    <div className="mx-3 my-4 md:mx-10 my-5">
+      <Header />
+    </div>
   );
 }
 
