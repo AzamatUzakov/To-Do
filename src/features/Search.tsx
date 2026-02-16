@@ -1,3 +1,4 @@
+import { Input } from '@/shared/ui/input';
 import React from 'react';
 
 interface SearchProps {
@@ -6,7 +7,11 @@ interface SearchProps {
 
 const Search: React.FC<SearchProps> = () => {
   return (
-    <div></div>
+    <div>
+
+
+      <Input/ >
+    </div>
   );
 };
 
