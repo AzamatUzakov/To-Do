@@ -1,0 +1,6 @@
+{
+  "todos": [
+    { "id": 1, "title": "Изучить React", "completed": false },
+    { "id": 2, "title": "Изучить Zustand", "completed": false }
+  ]
+}
