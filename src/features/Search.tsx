@@ -1,16 +1,12 @@
-import { Input } from '@/shared/ui/input';
-import React from 'react';
+import { Input } from "@/shared/ui/input";
+import React from "react";
 
-interface SearchProps {
-  
-}
+interface SearchProps {}
 
 const Search: React.FC<SearchProps> = () => {
   return (
     <div>
-
-
-      <Input/ >
+      <Input placeholder="Serch" />
     </div>
   );
 };
