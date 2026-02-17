@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import Search from "@/features/Search";
+import Search from "@/features/search/Search";
+import { useBoardStore } from "@/features/board/model/BoardStore";
 
-import logo from "../shared/assets/images/logo.svg";
-import moonLogo from "../shared/assets/images/moon-icon.png";
-import sunLogo from "../shared/assets/images/sun-icon.png";
+import logo from "../../shared/assets/images/logo.svg";
+
 import { MoonOutlined, SunOutlined } from "@ant-design/icons";
-import { Button, Flex, Segmented } from "antd";
+import { Flex, Segmented } from "antd";
 import { AppstoreOutlined, BarsOutlined } from "@ant-design/icons";
 import {
   Select,
@@ -14,17 +14,15 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../shared/ui/select";
-import CreateBoard from "@/features/CreateBoard";
+} from "../../shared/ui/select";
+import CreateBoard from "@/features/board/ui/CreateBoard";
+
 interface HeaderProps {}
 
 const Header: React.FC<HeaderProps> = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-
+  const openModal = useBoardStore((state) => state.openModal);
+  const isOpen = useBoardStore((state) => state.isModalOpen);
+  console.log(openModal);
 
   return (
     <header>
@@ -92,7 +90,7 @@ const Header: React.FC<HeaderProps> = () => {
             Создать задачу
           </button>
           <button
-            onClick={showModal}
+            onClick={openModal}
             className="bg-blue-600 cursor-pointer text-white font-medium text-[12px] flex justify-center items-center gap-1 md:text-[14px] px-3 md:px-4 h-[34px] rounded-full hover:bg-blue-700 transition-colors duration-200"
           >
             <span className="text-xl">+</span>
@@ -100,9 +98,7 @@ const Header: React.FC<HeaderProps> = () => {
           </button>
         </div>
       </div>
-      {isModalOpen && (
-        <CreateBoard isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
-      )}
+      {isOpen && <CreateBoard />}
     </header>
   );
 };

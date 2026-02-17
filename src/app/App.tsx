@@ -1,6 +1,6 @@
 import TaskBoard from "@/widgets/TaskDisplaySwitcher/TaskBoard";
-import Header from "../widgets/Header";
-import CreateBoard from "@/features/CreateBoard";
+import Header from "../widgets/Header/Header";
+import CreateBoard from "@/features/board/ui/CreateBoard";
 
 function App() {
   return (

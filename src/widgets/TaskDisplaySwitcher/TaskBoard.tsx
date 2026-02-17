@@ -1,30 +1,20 @@
 import React, { useEffect, useState } from "react";
-
-interface TaskBoardProps {
-  id: string;
-  title: string;
-}
+import { useBoardStore } from "@/features/board/model/BoardStore";
+import { FiTrash2 } from "react-icons/fi";
 
 const TaskBoard: React.FC = () => {
-  const [board, setBoard] = useState<TaskBoardProps[]>([]);
+  const columns = useBoardStore((state) => state.columns);
+  const fetchColumns = useBoardStore((state) => state.fetchColumns);
+  const deleteColumn = useBoardStore((state) => state.deleteColumn);
 
   useEffect(() => {
-    const fetBoard = async () => {
-      try {
-        const getRequest = await fetch("http://localhost:3001/columns");
-        const result = await getRequest.json();
-        setBoard(result);
-      } catch (err: any) {
-        throw new Error(err);
-      }
-    };
-    fetBoard();
-  }, []);
+    fetchColumns();
+  }, [fetchColumns]);
 
   return (
     <div className="min-h-[80vh] bg-gray-100 p-4 mt-3 rounded-2xl md:p-8">
       <div className="flex flex-col gap-4 md:flex-row md:overflow-x-auto md:pb-4">
-        {board.map((column) => (
+        {columns.map((column) => (
           <div
             key={column.id}
             className="
@@ -39,9 +29,18 @@ const TaskBoard: React.FC = () => {
               <h2 className="font-semibold text-gray-800 text-sm truncate">
                 {column.title}
               </h2>
-              <span className="ml-2 text-xs font-medium bg-gray-100 text-gray-500 rounded-full px-2 py-0.5">
-                {0}
-              </span>
+              <div className="flex items-center gap-2">
+                <span className="ml-2 text-xs font-medium bg-gray-100 text-gray-500 rounded-full px-2 py-0.5">
+                  {0}
+                </span>
+
+                <button
+                  onClick={() => deleteColumn(column.id)}
+                  className="p-1 rounded-md cursor-pointer text-red-500 hover:text-white hover:bg-red-500 transition-colors duration-200"
+                >
+                  <FiTrash2 size={14} />
+                </button>
+              </div>
             </div>
 
             {/* Tasks list */}
