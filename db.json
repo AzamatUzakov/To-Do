@@ -1,6 +1,32 @@
 {
-  "todos": [
-    { "id": 1, "title": "Изучить React", "completed": false },
-    { "id": 2, "title": "Изучить Zustand", "completed": false }
+  "tasks": [
+    {
+      "id": "1",
+      "title": "Изучить React",
+      "completed": false
+    },
+    {
+      "id": "2",
+      "title": "Изучить Zustand",
+      "completed": false
+    }
+  ],
+  "columns": [
+    {
+      "id": "col_1",
+      "title": "To Do"
+    },
+    {
+      "id": "col_2",
+      "title": "In Progress"
+    },
+    {
+      "id": "col_3",
+      "title": "Donne"
+    },
+    {
+      "id": "32cd5e96-91e0-41ef-8184-631597c40b2f",
+      "title": "Progress"
+    }
   ]
 }
