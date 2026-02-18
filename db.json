@@ -12,26 +12,15 @@
       "updatedAt": "2026-02-18T17:39:00.490Z"
     },
     {
-      "id": "3bd548f7-2937-41ae-a33e-42e43d504a86",
-      "title": "lllllllllllllllllll",
-      "description": "dlcoooooooooooo",
-      "columnId": "col_2",
-      "priority": "medium",
-      "status": "col_2",
-      "completed": false,
-      "createdAt": "2026-02-18T17:40:15.752Z",
-      "updatedAt": "2026-02-18T20:41:18.984Z"
-    },
-    {
       "id": "25d7f0e9-0f90-4e3a-ad38-f284019adaee",
       "title": "lolol",
       "description": "wow",
       "columnId": "col_3",
-      "priority": "low",
+      "priority": "medium",
       "status": "todo",
       "completed": false,
       "createdAt": "2026-02-18T17:41:01.190Z",
-      "updatedAt": "2026-02-18T18:17:35.910Z"
+      "updatedAt": "2026-02-18T21:06:13.647Z"
     },
     {
       "id": "cda695f9-ab90-491f-afa6-bbb9ca576e50",
@@ -48,12 +37,31 @@
       "id": "efb7f5ea-30da-43b9-80b3-9c269c646214",
       "title": "Пофикстить столбец",
       "description": "влсьвльслвьслвьлсьвлсьлвьсльвлсьвльслвслвьсв",
-      "columnId": "col_2",
+      "columnId": "col_1",
       "priority": "high",
       "status": "todo",
       "completed": false,
       "createdAt": "2026-02-18T18:27:52.845Z",
-      "updatedAt": "2026-02-18T20:08:22.655Z"
+      "updatedAt": "2026-02-18T21:39:19.340Z"
+    },
+    {
+      "id": "03c92a7a-32c4-40e7-ac1f-b9ef4255d29d",
+      "title": "всвс",
+      "description": "всвс",
+      "columnId": "col_1",
+      "priority": "high",
+      "status": "in-progress",
+      "completed": false,
+      "createdAt": "2026-02-18T21:31:04.222Z",
+      "updatedAt": "2026-02-18T21:31:31.703Z"
+    },
+    {
+      "id": "6f9c5e8e-b790-40a4-8b9c-7aae5529cdb6",
+      "title": "",
+      "description": "",
+      "completed": false,
+      "createdAt": "2026-02-18T21:34:10.616Z",
+      "updatedAt": "2026-02-18T21:34:10.616Z"
     }
   ],
   "columns": [

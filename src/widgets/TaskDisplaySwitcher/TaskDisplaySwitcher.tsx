@@ -17,7 +17,7 @@ const TaskDisplaySwitcher: React.FC<TaskDisplaySwitcherProps> = () => {
   const viewMode = switchViewStore((state) => state.viewMode);
 
   return (
-    <div className="min-h-[80vh] bg-gray-100 p-4 mt-3 rounded-2xl md:p-8">
+    <div className="min-h-[80vh] p-4 mt-5 rounded-2xl bg-gray-100 dark:bg-[rgba(36,99,235,0.2)] md:p-8">
       {viewMode === "Kanban" ? <TaskBoard /> : <TaskList />}{" "}
       {isEditModalOpen && editingTaskId && <EditTask taskId={editingTaskId} />}
       {isViewModalOpen && viewTaskId && <ViewTask taskId={viewTaskId} />}

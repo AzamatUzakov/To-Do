@@ -35,10 +35,7 @@ const TaskBoard: React.FC = () => {
                 {column.title}
               </h2>
               <div className="flex items-center gap-2">
-                {/*  <span className="ml-2 text-xs font-medium bg-gray-100 text-gray-500 rounded-full px-2 py-0.5">
-                  {tasks.length > 0 ? tasks.length : 0}
-                </span> */}
-
+              
                 <button
                   onClick={() => deleteColumn(column.id)}
                   className="p-1 rounded-md cursor-pointer text-red-500 hover:text-white hover:bg-red-500 transition-colors duration-200"
