@@ -3,9 +3,7 @@ import { useBoardStore } from "@/features/board/model/BoardStore";
 
 import logo from "../../shared/assets/images/logo.svg";
 
-import { MoonOutlined, SunOutlined } from "@ant-design/icons";
-import { Flex, Segmented } from "antd";
-import { AppstoreOutlined, BarsOutlined } from "@ant-design/icons";
+
 import {
   Select,
   SelectContent,
@@ -14,9 +12,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../../shared/ui/select";
+
 import CreateBoard from "@/features/board/ui/CreateBoard";
 import { useTaskStore } from "@/features/task/model/TaskStore";
 import CreateTask from "@/features/task/ui/CreateTask";
+import ViewToggle from "@/features/toggles/ui/ViewToggle";
+import ThemeToggle from "@/features/toggles/ui/ThemeToggle";
 
 interface HeaderProps {}
 
@@ -39,15 +40,8 @@ const Header: React.FC<HeaderProps> = () => {
         </div>
 
         <div className="flex items-center gap-3">
-          <Flex gap="small" align="flex-start" vertical>
-            <Segmented
-              shape="round"
-              options={[
-                { value: "light", icon: <SunOutlined /> },
-                { value: "dark", icon: <MoonOutlined /> },
-              ]}
-            />
-          </Flex>
+       
+       <ThemeToggle/>
 
           <Select defaultValue="ru">
             <SelectTrigger className="cursor-pointer h-[34px]">
@@ -80,13 +74,7 @@ const Header: React.FC<HeaderProps> = () => {
       </div>
 
       <div className="mt-3 flex justify-between md:mt-5">
-        <Segmented
-          orientation="horizontal"
-          options={[
-            { value: "List", icon: <BarsOutlined /> },
-            { value: "Kanban", icon: <AppstoreOutlined /> },
-          ]}
-        />
+        <ViewToggle />
         <div className="flex gap-3">
           <button
             onClick={openModalTask}
@@ -106,7 +94,6 @@ const Header: React.FC<HeaderProps> = () => {
       </div>
       {isOpenModalColumn && <CreateBoard />}
       {isOpenModalTask && <CreateTask />}
-
     </header>
   );
 };

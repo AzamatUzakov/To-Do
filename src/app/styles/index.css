@@ -1,6 +1,22 @@
 /* src/index.css */
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+html,
+body,
+#root {
+  background: white;
+  color: black;
+  height: 100%;
+}
+
+.dark html,
+.dark body,
+.dark #root {
+  background: #09090b;
+  color: white;
+}
 :root {
   --background: 0 0% 100%;
   --foreground: 222.2 84% 4.9%;
