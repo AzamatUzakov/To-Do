@@ -1,6 +1,7 @@
 import React from "react";
 import { GripVertical, Pencil, Trash2, Clock } from "lucide-react";
 import { useTaskStore } from "@/features/task/model/TaskStore";
+import { useTranslation } from "react-i18next";
 
 interface Task {
   id: string;
@@ -18,49 +19,45 @@ interface TaskCardProps {
   task: Task;
 }
 
-/* Стили как в code.html */
-const priorityConfig: Record<
-  string,
-  { label: string; dot: string; badge: string }
-> = {
+const priorityConfig: Record<string, { dot: string; badge: string }> = {
   high: {
-    label: "Высокий",
     dot: "bg-orange-500",
     badge:
       "bg-rose-50 text-rose-600 border border-rose-200 dark:bg-orange-500/10 dark:text-orange-400 dark:border-transparent",
   },
   medium: {
-    label: "Средний",
     dot: "bg-primary",
     badge:
       "bg-amber-50 text-amber-600 border border-amber-200 dark:bg-primary/10 dark:text-primary dark:border-transparent",
   },
   low: {
-    label: "Низкий",
     dot: "bg-slate-400",
     badge:
       "bg-emerald-50 text-emerald-600 border border-emerald-200 dark:bg-slate-700 dark:text-slate-400 dark:border-transparent",
   },
 };
 
-const statusConfig: Record<string, { label: string; style: string; glow?: string }> = {
+const statusConfig: Record<string, { style: string; glow?: string }> = {
   todo: {
-    label: "К выполнению",
     style:
       "bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-400",
     glow: "task-glow-todo",
   },
   "in-progress": {
-    label: "В процессе",
     style: "bg-blue-100 text-blue-600 dark:bg-primary/20 dark:text-primary",
     glow: "task-glow-progress",
   },
   done: {
-    label: "Готово",
     style:
       "bg-emerald-100 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-400",
     glow: "task-glow-done",
   },
+};
+
+const statusKeyMap: Record<string, string> = {
+  todo: "todo",
+  "in-progress": "inProgress",
+  done: "done",
 };
 
 function formatDate(iso?: string) {
@@ -72,9 +69,13 @@ function formatDate(iso?: string) {
 }
 
 const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
+  const { t } = useTranslation();
   const priority = priorityConfig[task.priority] ?? priorityConfig.medium;
   const status = statusConfig[task.status] ?? statusConfig.todo;
   const glowClass = status.glow ?? "";
+  const priorityKey = task.priority && priorityConfig[task.priority] ? task.priority : "medium";
+  const priorityLabel = t(`priority.${priorityKey}`);
+  const statusLabel = t(`statusLabels.${statusKeyMap[task.status] ?? "todo"}`);
 
   const openEditModal = useTaskStore((state) => state.openEditModal);
   const openViewTask = useTaskStore((state) => state.openViewTask);
@@ -105,7 +106,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
           
             touch-none
           "
-          aria-label="Перетащить задачу"
+          aria-label={t("aria.dragTask")}
         >
           <GripVertical size={16} strokeWidth={2} />
         </button>
@@ -139,7 +140,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
               text-slate-500 hover:text-primary dark:text-slate-500 dark:hover:text-primary
               transition-colors
             "
-            aria-label="Редактировать"
+            aria-label={t("aria.edit")}
           >
             <Pencil size={12} strokeWidth={2.2} />
           </button>
@@ -153,7 +154,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
               text-slate-500 hover:text-red-400 dark:text-slate-500 dark:hover:text-red-400
               transition-colors
             "
-            aria-label="Удалить"
+            aria-label={t("aria.delete")}
           >
             <Trash2 size={12} strokeWidth={2.2} />
           </button>
@@ -177,7 +178,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
           <span
             className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${priority.dot}`}
           />
-          {priority.label}
+          {priorityLabel}
         </span>
 
         <span
@@ -187,7 +188,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
             ${status.style}
           `}
         >
-          {status.label}
+          {statusLabel}
         </span>
 
         {task.createdAt && (

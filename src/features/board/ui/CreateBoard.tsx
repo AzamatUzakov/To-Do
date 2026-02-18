@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { Modal } from "antd";
+import { useTranslation } from "react-i18next";
 import { createColumnRequest } from "../api/BoardApi";
 import { useBoardStore } from "../model/BoardStore";
 
 interface CreateBoardProps {}
 const CreateBoard: React.FC<CreateBoardProps> = () => {
+  const { t } = useTranslation();
   const [title, setTitle] = useState<string>("");
 
   const isModalOpen = useBoardStore((state) => state.isModalOpen);
@@ -26,7 +28,7 @@ const CreateBoard: React.FC<CreateBoardProps> = () => {
   return (
     <>
       <Modal
-        title="Создание колонки"
+        title={t("modals.createColumn")}
         footer={null}
         onCancel={() => {
           closeModal();
@@ -38,7 +40,7 @@ const CreateBoard: React.FC<CreateBoardProps> = () => {
           <input
             name="title"
             onChange={(e) => setTitle(e.target.value)}
-            placeholder="Название колонки"
+            placeholder={t("placeholders.columnName")}
             className="px-4 py-2 border border-gray-300 dark:border-slate-600 dark:bg-slate-800/60 dark:text-slate-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 dark:focus:ring-blue-400 dark:focus:border-blue-400 transition"
           />
           <button
@@ -47,7 +49,7 @@ const CreateBoard: React.FC<CreateBoardProps> = () => {
             }}
             className="flex cursor-pointer items-center justify-center gap-2 px-4 py-2 bg-blue-500 text-white font-medium rounded-md shadow hover:bg-blue-600 active:scale-95 transition-transform"
           >
-            <span>Сохранить</span>
+            <span>{t("save")}</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"

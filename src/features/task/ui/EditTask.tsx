@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Modal, Input, Select } from "antd";
+import { useTranslation } from "react-i18next";
 import { useTaskStore } from "../model/TaskStore";
 import { useBoardStore } from "@/features/board/model/BoardStore";
 
@@ -8,6 +9,7 @@ interface EditTaskProps {
 }
 
 const EditTask: React.FC<EditTaskProps> = ({ taskId }) => {
+  const { t } = useTranslation();
   const [newTitle, setNewTitle] = useState<string>("");
   const [newDescription, setNewDescription] = useState<string>("");
   const [newPriority, setNewPriority] = useState<string | undefined>(undefined);
@@ -65,7 +67,7 @@ const EditTask: React.FC<EditTaskProps> = ({ taskId }) => {
   return (
     <div>
       <Modal
-        title="Изменение задачи"
+        title={t("modals.editTask")}
         footer={null}
         onCancel={closeEditModal}
         open={isEditModalOpen}
@@ -74,30 +76,30 @@ const EditTask: React.FC<EditTaskProps> = ({ taskId }) => {
           <Input
             value={newTitle}
             onChange={(e) => setNewTitle(e.target.value)}
-            placeholder="Название задачи"
+            placeholder={t("placeholders.taskTitle")}
           />
 
           <Input.TextArea
             value={newDescription}
             onChange={(e) => setNewDescription(e.target.value)}
-            placeholder="Описание задачи"
+            placeholder={t("placeholders.taskDescription")}
             rows={3}
           />
 
           <Select
             value={newPriority}
             onChange={(value) => setNewPriority(value)}
-            placeholder="Приоритет"
+            placeholder={t("placeholders.priority")}
             options={[
-              { label: "Низкий", value: "low" },
-              { label: "Средний", value: "medium" },
-              { label: "Высокий", value: "high" },
+              { label: t("priority.low"), value: "low" },
+              { label: t("priority.medium"), value: "medium" },
+              { label: t("priority.high"), value: "high" },
             ]}
           />
           <Select
             value={newColumnId}
             onChange={(value) => setNewColumnId(value)}
-            placeholder="Выберите колонку"
+            placeholder={t("placeholders.selectColumn")}
             options={columns.map((col) => ({
               label: col.title,
               value: col.id,
@@ -107,7 +109,7 @@ const EditTask: React.FC<EditTaskProps> = ({ taskId }) => {
             onClick={editTask}
             className="cursor-pointer flex items-center justify-center gap-2 px-4 py-2 bg-blue-500 text-white font-medium rounded-md shadow hover:bg-blue-600 active:scale-95 transition-transform"
           >
-            Сохранить
+            {t("save")}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"

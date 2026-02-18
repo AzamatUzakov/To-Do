@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Modal, Input, Select } from "antd";
+import { useTranslation } from "react-i18next";
 import { useTaskStore } from "../model/TaskStore";
 import { useBoardStore } from "@/features/board/model/BoardStore";
 import { createTaskRequest } from "../api/TaskApi";
@@ -7,6 +8,7 @@ import { createTaskRequest } from "../api/TaskApi";
 interface CreateTaskProps {}
 
 const CreateTask: React.FC<CreateTaskProps> = () => {
+  const { t } = useTranslation();
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [columnId, setColumnId] = useState<string | undefined>(undefined);
@@ -53,7 +55,7 @@ const CreateTask: React.FC<CreateTaskProps> = () => {
     <div>
       <Modal
         key={String(isModalOpen)}
-        title="Создание задачи"
+        title={t("modals.createTask")}
         footer={null}
         onCancel={closeModal}
         open={isModalOpen}
@@ -62,20 +64,20 @@ const CreateTask: React.FC<CreateTaskProps> = () => {
           <Input
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            placeholder="Название задачи"
+            placeholder={t("placeholders.taskTitle")}
           />
 
           <Input.TextArea
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            placeholder="Описание задачи"
+            placeholder={t("placeholders.taskDescription")}
             rows={3}
           />
 
           <Select
             value={columnId}
             onChange={(value) => setColumnId(value)}
-            placeholder="Выберите колонку"
+            placeholder={t("placeholders.selectColumn")}
             options={columns.map((col) => ({
               label: col.title,
               value: col.id,
@@ -85,22 +87,22 @@ const CreateTask: React.FC<CreateTaskProps> = () => {
           <Select
             value={priority}
             onChange={(value) => setPriority(value)}
-            placeholder="Приоритет"
+            placeholder={t("placeholders.priority")}
             options={[
-              { label: "Низкий", value: "low" },
-              { label: "Средний", value: "medium" },
-              { label: "Высокий", value: "high" },
+              { label: t("priority.low"), value: "low" },
+              { label: t("priority.medium"), value: "medium" },
+              { label: t("priority.high"), value: "high" },
             ]}
           />
 
           <Select
             value={status}
             onChange={(value) => setStatus(value)}
-            placeholder="Статус"
+            placeholder={t("status")}
             options={[
-              { label: "В работе", value: "todo" },
-              { label: "В процессе", value: "in-progress" },
-              { label: "Выполнено", value: "done" },
+              { label: t("statusLabels.todo"), value: "todo" },
+              { label: t("statusLabels.inProgress"), value: "in-progress" },
+              { label: t("statusLabels.done"), value: "done" },
             ]}
           />
 
@@ -108,7 +110,7 @@ const CreateTask: React.FC<CreateTaskProps> = () => {
             onClick={createTask}
             className="flex items-center justify-center gap-2 px-4 py-2 bg-blue-500 text-white font-medium rounded-md shadow hover:bg-blue-600 active:scale-95 transition-transform"
           >
-            Сохранить
+            {t("save")}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"

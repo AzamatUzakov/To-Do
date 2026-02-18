@@ -27,7 +27,7 @@ const Header: React.FC<HeaderProps> = () => {
       <div className="flex justify-between items-center">
         <div className="flex w-[150px] gap-2">
           <img src={logo} className="w-[30px]" alt="logo" />
-          <p className="font-bold text-[18px] text-foreground">TaskFlow</p>
+          <p className="font-bold text-[18px] text-foreground">{t("header.appName")}</p>
         </div>
         <div className="hidden md:block w-[60%]">
           <Search />

@@ -13,7 +13,7 @@ import { changeLanguage } from "@/shared/config/i18n/i18n";
 interface LanguageToggle {}
 
 const LanguageToggle: React.FC<LanguageToggle> = () => {
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
 
   const handleChange = (lang: string) => {
     changeLanguage(lang as "en" | "ru");
@@ -22,7 +22,7 @@ const LanguageToggle: React.FC<LanguageToggle> = () => {
   return (
     <Select defaultValue={i18n.language} onValueChange={handleChange}>
       <SelectTrigger className="cursor-pointer h-[34px]">
-        <SelectValue placeholder="Language" />
+        <SelectValue placeholder={t("language")} />
       </SelectTrigger>
 
       <SelectContent className="cursor-pointer w-[40px] bg-white dark:bg-surface-dark dark:border-slate-800">

@@ -45,23 +45,23 @@
       "updatedAt": "2026-02-18T21:39:19.340Z"
     },
     {
-      "id": "03c92a7a-32c4-40e7-ac1f-b9ef4255d29d",
-      "title": "всвс",
-      "description": "всвс",
-      "columnId": "col_1",
-      "priority": "high",
-      "status": "in-progress",
-      "completed": false,
-      "createdAt": "2026-02-18T21:31:04.222Z",
-      "updatedAt": "2026-02-18T21:31:31.703Z"
-    },
-    {
       "id": "6f9c5e8e-b790-40a4-8b9c-7aae5529cdb6",
       "title": "",
       "description": "",
       "completed": false,
       "createdAt": "2026-02-18T21:34:10.616Z",
       "updatedAt": "2026-02-18T21:34:10.616Z"
+    },
+    {
+      "id": "a277dcbb-4e2d-4a43-bcd6-d688ee22f344",
+      "title": "rfrf",
+      "description": "frfr",
+      "columnId": "col_2",
+      "priority": "low",
+      "status": "in-progress",
+      "completed": false,
+      "createdAt": "2026-02-18T22:10:36.650Z",
+      "updatedAt": "2026-02-18T22:10:36.651Z"
     }
   ],
   "columns": [
