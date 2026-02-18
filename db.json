@@ -3,12 +3,57 @@
     {
       "id": "1",
       "title": "Изучить React",
-      "completed": false
+      "description": "Прочитать мангу и документацию по React",
+      "columnId": "todo",
+      "priority": "high",
+      "status": "col_2",
+      "completed": false,
+      "createdAt": "2026-02-17T23:34:00Z",
+      "updatedAt": "2026-02-18T17:36:21.916Z"
     },
     {
-      "id": "2",
-      "title": "Изучить Zustand",
-      "completed": false
+      "id": "fac74000-ef04-45f1-aed3-bdaec26d7a6f",
+      "title": "Изучить React",
+      "description": "Прочитать мангу и документацию по React",
+      "columnId": "done",
+      "priority": "medium",
+      "status": "col_2",
+      "completed": false,
+      "createdAt": "2026-02-18T17:38:55.573Z",
+      "updatedAt": "2026-02-18T17:39:00.490Z"
+    },
+    {
+      "id": "3bd548f7-2937-41ae-a33e-42e43d504a86",
+      "title": "aaaaaaaaaaaaaaa",
+      "description": "bbbbbbbbbbbbb",
+      "columnId": "in-progress",
+      "priority": "low",
+      "status": "col_2",
+      "completed": false,
+      "createdAt": "2026-02-18T17:40:15.752Z",
+      "updatedAt": "2026-02-18T17:40:21.895Z"
+    },
+    {
+      "id": "25d7f0e9-0f90-4e3a-ad38-f284019adaee",
+      "title": "lolol",
+      "description": "wow",
+      "columnId": "col_3",
+      "priority": "low",
+      "status": "todo",
+      "completed": false,
+      "createdAt": "2026-02-18T17:41:01.190Z",
+      "updatedAt": "2026-02-18T18:17:35.910Z"
+    },
+    {
+      "id": "cda695f9-ab90-491f-afa6-bbb9ca576e50",
+      "title": "dlclfvolgfbv",
+      "description": "dlc,ldfvfgv",
+      "columnId": "col_2",
+      "priority": "high",
+      "status": "in-progress",
+      "completed": false,
+      "createdAt": "2026-02-18T17:58:59.639Z",
+      "updatedAt": "2026-02-18T18:17:30.676Z"
     }
   ],
   "columns": [

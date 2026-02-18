@@ -1,18 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { useBoardStore } from "@/features/board/model/BoardStore";
 import { FiTrash2 } from "react-icons/fi";
+import TaskCard from "@/entities/task/ui/TaskCard";
+import { useTaskStore } from "@/features/task/model/TaskStore";
+import EditTask from "@/features/task/ui/EditTask";
 
 const TaskBoard: React.FC = () => {
   const columns = useBoardStore((state) => state.columns);
   const fetchColumns = useBoardStore((state) => state.fetchColumns);
   const deleteColumn = useBoardStore((state) => state.deleteColumn);
 
+  const tasks = useTaskStore((state) => state.tasks);
+  const fetchTasks = useTaskStore((state) => state.fetchTasks);
+
   useEffect(() => {
     fetchColumns();
-  }, [fetchColumns]);
+    fetchTasks();
+  }, [fetchColumns, fetchTasks]);
 
   return (
-    <div className="min-h-[80vh] bg-gray-100 p-4 mt-3 rounded-2xl md:p-8">
       <div className="flex flex-col gap-4 md:flex-row md:overflow-x-auto md:pb-4">
         {columns.map((column) => (
           <div
@@ -30,9 +36,9 @@ const TaskBoard: React.FC = () => {
                 {column.title}
               </h2>
               <div className="flex items-center gap-2">
-                <span className="ml-2 text-xs font-medium bg-gray-100 text-gray-500 rounded-full px-2 py-0.5">
-                  {0}
-                </span>
+                {/*  <span className="ml-2 text-xs font-medium bg-gray-100 text-gray-500 rounded-full px-2 py-0.5">
+                  {tasks.length > 0 ? tasks.length : 0}
+                </span> */}
 
                 <button
                   onClick={() => deleteColumn(column.id)}
@@ -42,39 +48,18 @@ const TaskBoard: React.FC = () => {
                 </button>
               </div>
             </div>
-
             {/* Tasks list */}
-            {/* <div className="flex flex-col gap-2 p-3 flex-1">
-              {column.tasks?.map((task) => (
-                <div
-                  key={task.id}
-                  className="bg-gray-50 hover:bg-gray-100 transition-colors rounded-xl px-3 py-2.5 text-sm text-gray-700 cursor-pointer border border-gray-100"
-                >
-                  {task.title}
-                </div>
-              ))}
-
-              <button className="mt-1 flex items-center gap-1.5 text-xs text-gray-400 hover:text-gray-600 transition-colors py-1 px-1">
-                <svg
-                  className="w-3.5 h-3.5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 4v16m8-8H4"
-                  />
-                </svg>
-                Add task
-              </button>
-            </div> */}
+            <div className="flex flex-col gap-2 p-3 flex-1">
+              {tasks
+                .filter((task) => task.columnId === column.id)
+                .map((task) => (
+                  <TaskCard key={task.id} task={task} />
+                ))}
+            </div>{" "}
           </div>
         ))}
       </div>
-    </div>
+    
   );
 };
 

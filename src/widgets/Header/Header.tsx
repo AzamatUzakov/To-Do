@@ -16,13 +16,17 @@ import {
   SelectValue,
 } from "../../shared/ui/select";
 import CreateBoard from "@/features/board/ui/CreateBoard";
+import { useTaskStore } from "@/features/task/model/TaskStore";
+import CreateTask from "@/features/task/ui/CreateTask";
 
 interface HeaderProps {}
 
 const Header: React.FC<HeaderProps> = () => {
-  const openModal = useBoardStore((state) => state.openModal);
-  const isOpen = useBoardStore((state) => state.isModalOpen);
-  console.log(openModal);
+  const openModalColumn = useBoardStore((state) => state.openModal);
+  const isOpenModalColumn = useBoardStore((state) => state.isModalOpen);
+
+  const openModalTask = useTaskStore((state) => state.openModal);
+  const isOpenModalTask = useTaskStore((state) => state.isModalOpen);
 
   return (
     <header>
@@ -85,12 +89,15 @@ const Header: React.FC<HeaderProps> = () => {
           ]}
         />
         <div className="flex gap-3">
-          <button className="bg-blue-600 cursor-pointer text-white font-medium text-[12px] flex justify-center items-center gap-1 md:text-[14px] px-3 md:px-4 h-[34px] rounded-full hover:bg-blue-700 transition-colors duration-200">
+          <button
+            onClick={openModalTask}
+            className="bg-blue-600 cursor-pointer text-white font-medium text-[12px] flex justify-center items-center gap-1 md:text-[14px] px-3 md:px-4 h-[34px] rounded-full hover:bg-blue-700 transition-colors duration-200"
+          >
             <span className="text-xl">+</span>
             Создать задачу
           </button>
           <button
-            onClick={openModal}
+            onClick={openModalColumn}
             className="bg-blue-600 cursor-pointer text-white font-medium text-[12px] flex justify-center items-center gap-1 md:text-[14px] px-3 md:px-4 h-[34px] rounded-full hover:bg-blue-700 transition-colors duration-200"
           >
             <span className="text-xl">+</span>
@@ -98,7 +105,9 @@ const Header: React.FC<HeaderProps> = () => {
           </button>
         </div>
       </div>
-      {isOpen && <CreateBoard />}
+      {isOpenModalColumn && <CreateBoard />}
+      {isOpenModalTask && <CreateTask />}
+
     </header>
   );
 };
