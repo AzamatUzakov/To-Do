@@ -1,14 +1,59 @@
 {
   "tasks": [
     {
-      "id": "1",
+      "id": "fac74000-ef04-45f1-aed3-bdaec26d7a6f",
       "title": "Изучить React",
-      "completed": false
+      "description": "Прочитать мангу и документацию по React",
+      "columnId": "done",
+      "priority": "medium",
+      "status": "col_2",
+      "completed": false,
+      "createdAt": "2026-02-18T17:38:55.573Z",
+      "updatedAt": "2026-02-18T17:39:00.490Z"
     },
     {
-      "id": "2",
-      "title": "Изучить Zustand",
-      "completed": false
+      "id": "3bd548f7-2937-41ae-a33e-42e43d504a86",
+      "title": "lllllllllllllllllll",
+      "description": "dlcoooooooooooo",
+      "columnId": "col_2",
+      "priority": "medium",
+      "status": "col_2",
+      "completed": false,
+      "createdAt": "2026-02-18T17:40:15.752Z",
+      "updatedAt": "2026-02-18T20:41:18.984Z"
+    },
+    {
+      "id": "25d7f0e9-0f90-4e3a-ad38-f284019adaee",
+      "title": "lolol",
+      "description": "wow",
+      "columnId": "col_3",
+      "priority": "low",
+      "status": "todo",
+      "completed": false,
+      "createdAt": "2026-02-18T17:41:01.190Z",
+      "updatedAt": "2026-02-18T18:17:35.910Z"
+    },
+    {
+      "id": "cda695f9-ab90-491f-afa6-bbb9ca576e50",
+      "title": "dlclfvolgfbv",
+      "description": "dlc,ldfvfgv",
+      "columnId": "col_1",
+      "priority": "high",
+      "status": "in-progress",
+      "completed": false,
+      "createdAt": "2026-02-18T17:58:59.639Z",
+      "updatedAt": "2026-02-18T20:02:00.075Z"
+    },
+    {
+      "id": "efb7f5ea-30da-43b9-80b3-9c269c646214",
+      "title": "Пофикстить столбец",
+      "description": "влсьвльслвьслвьлсьвлсьлвьсльвлсьвльслвслвьсв",
+      "columnId": "col_2",
+      "priority": "high",
+      "status": "todo",
+      "completed": false,
+      "createdAt": "2026-02-18T18:27:52.845Z",
+      "updatedAt": "2026-02-18T20:08:22.655Z"
     }
   ],
   "columns": [
@@ -25,8 +70,8 @@
       "title": "Donne"
     },
     {
-      "id": "32cd5e96-91e0-41ef-8184-631597c40b2f",
-      "title": "Progress"
+      "id": "91ea145c-6442-4361-9cd7-8b56acec7610",
+      "title": "Bugs"
     }
   ]
 }

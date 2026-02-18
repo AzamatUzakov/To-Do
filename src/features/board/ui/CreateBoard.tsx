@@ -1,34 +1,26 @@
-import React, { useEffect, useId, useState } from "react";
-import { Button, Modal } from "antd";
-import { Input } from "@/shared/ui/input";
+import React, { useState } from "react";
+import { Modal } from "antd";
+import { createColumnRequest } from "../api/BoardApi";
+import { useBoardStore } from "../model/BoardStore";
 
-interface CreateBoardProps {
-  isModalOpen: boolean;
-  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}
-const CreateBoard: React.FC<CreateBoardProps> = ({
-  isModalOpen,
-  setIsModalOpen,
-}) => {
+interface CreateBoardProps {}
+const CreateBoard: React.FC<CreateBoardProps> = () => {
   const [title, setTitle] = useState<string>("");
 
-  //Создание колокнки
+  const isModalOpen = useBoardStore((state) => state.isModalOpen);
+  const closeModal = useBoardStore((state) => state.closeModal);
+  const addColumn = useBoardStore((state) => state.addColumn);
+
   async function createColumn() {
-    const postRequest = await fetch("http://localhost:3001/columns", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        id: crypto.randomUUID(),
-        title: title,
-      }),
-    });
-    if (!postRequest.ok) {
-      throw new Error("Failed to create column");
+    try {
+      const newColumn = await createColumnRequest(title); //Функция POST для калонок
+
+      addColumn(newColumn);
+      setTitle("");
+      closeModal();
+    } catch (err) {
+      console.log(err);
     }
-    setIsModalOpen(false)
-    return await postRequest.json();
   }
 
   return (
@@ -36,10 +28,13 @@ const CreateBoard: React.FC<CreateBoardProps> = ({
       <Modal
         title="Создание колонки"
         footer={null}
-        onCancel={() => {setIsModalOpen(false), setTitle("")}}
+        onCancel={() => {
+          closeModal();
+          setTitle("");
+        }}
         open={isModalOpen}
       >
-        <div className="flex flex-col gap-4 w-80 py-4 bg-white ">
+        <div className="flex flex-col gap-4 w-full py-4 bg-white ">
           <input
             name="title"
             onChange={(e) => setTitle(e.target.value)}
