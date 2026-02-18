@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import Search from "@/features/search/Search";
 import { useBoardStore } from "@/features/board/model/BoardStore";
 

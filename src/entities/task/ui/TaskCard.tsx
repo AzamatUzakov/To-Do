@@ -59,10 +59,16 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
 
   const openEditModal = useTaskStore((state) => state.openEditModal);
 
+  const openViewTask = useTaskStore((state) => state.openViewTask);
   const deleteTask = useTaskStore((state) => state.deleteTask);
   return (
     <div
+      onClick={(e) => {
+        e.stopPropagation();
+        openViewTask(task.id);
+      }}
       className="
+      cursor-pointer
         group relative w-full
         bg-white rounded-xl
         shadow-sm shadow-slate-100
@@ -117,9 +123,12 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
           "
         >
           <button
-            onClick={() => openEditModal(task.id)}
+            onClick={(e) => {
+              e.stopPropagation();
+              openEditModal(task.id);
+            }}
             className="
-          cursor-pointer
+          cursor-pointer  relative z-50
               p-1.5 rounded-lg text-slate-400
               hover:text-violet-500 hover:bg-violet-50
               active:bg-violet-100
@@ -130,10 +139,12 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
             <Pencil size={12} strokeWidth={2.2} />
           </button>
           <button
-            onClick={() => deleteTask(task.id)}
+            onClick={(e) => {
+              e.stopPropagation();
+              deleteTask(task.id);
+            }}
             className="
-          cursor-pointer
-
+          cursor-pointer relative z-50
               p-1.5 rounded-lg text-slate-400
               hover:text-rose-500 hover:bg-rose-50
               active:bg-rose-100
@@ -152,12 +163,9 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
         </p>
       )}
 
-      {/* Divider */}
       <div className="mx-3 h-px bg-slate-100" />
 
-      {/* Footer */}
       <div className="flex items-center gap-1.5 px-3 py-2 flex-wrap">
-        {/* Priority badge */}
         <span
           className={`
             flex items-center gap-1 px-2 py-0.5

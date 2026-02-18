@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useBoardStore } from "@/features/board/model/BoardStore";
 import { FiTrash2 } from "react-icons/fi";
 import TaskCard from "@/entities/task/ui/TaskCard";
 import { useTaskStore } from "@/features/task/model/TaskStore";
-import EditTask from "@/features/task/ui/EditTask";
 
 const TaskBoard: React.FC = () => {
   const columns = useBoardStore((state) => state.columns);

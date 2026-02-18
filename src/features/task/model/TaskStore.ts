@@ -12,18 +12,29 @@ interface Task {
   columnId: string;
   priority: string;
   status: string;
+  completed?: boolean;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 interface TaskStore {
   isModalOpen: boolean;
   isEditModalOpen: boolean;
+  isViewModalOpen: boolean;
+
   editingTaskId: string | null;
+  viewTaskId: string | null;
 
   tasks: Task[];
   openModal: () => void;
   closeModal: () => void;
+
   openEditModal: (taskId: string) => void;
   closeEditModal: () => void;
+
+  openViewTask: (taskId: string) => void;
+  closeViewTask: () => void;
+
   addTasks: (task: Task) => void;
   fetchTasks: () => Promise<void>;
   deleteTask: (id: string) => Promise<void>;
@@ -40,13 +51,21 @@ interface TaskStore {
 export const useTaskStore = create<TaskStore>((set) => ({
   isModalOpen: false,
   isEditModalOpen: false,
+  isViewModalOpen: false,
   editingTaskId: null,
+  viewTaskId: null,
   tasks: [],
 
   openModal: () => set({ isModalOpen: true }),
   closeModal: () => set({ isModalOpen: false }),
-  openEditModal: (taskId: string) => set({ isEditModalOpen: true,editingTaskId:taskId }),
-  closeEditModal: () => set({ isEditModalOpen: false, editingTaskId:null }),
+
+  openEditModal: (taskId: string) =>
+    set({ isEditModalOpen: true, editingTaskId: taskId }),
+  closeEditModal: () => set({ isEditModalOpen: false, editingTaskId: null }),
+
+  openViewTask: (taskId: string) =>
+    set({ isViewModalOpen: true, viewTaskId: taskId }),
+  closeViewTask: () => set({ isEditModalOpen: false, viewTaskId: null }),
 
   //Метод для отоброжение задачек
   fetchTasks: async () => {

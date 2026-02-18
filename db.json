@@ -48,12 +48,23 @@
       "id": "cda695f9-ab90-491f-afa6-bbb9ca576e50",
       "title": "dlclfvolgfbv",
       "description": "dlc,ldfvfgv",
-      "columnId": "col_2",
+      "columnId": "col_1",
       "priority": "high",
       "status": "in-progress",
       "completed": false,
       "createdAt": "2026-02-18T17:58:59.639Z",
-      "updatedAt": "2026-02-18T18:17:30.676Z"
+      "updatedAt": "2026-02-18T20:02:00.075Z"
+    },
+    {
+      "id": "efb7f5ea-30da-43b9-80b3-9c269c646214",
+      "title": "Пофикстить столбец",
+      "description": "влсьвльслвьслвьлсьвлсьлвьсльвлсьвльслвслвьсв",
+      "columnId": "91ea145c-6442-4361-9cd7-8b56acec7610",
+      "priority": "high",
+      "status": "todo",
+      "completed": false,
+      "createdAt": "2026-02-18T18:27:52.845Z",
+      "updatedAt": "2026-02-18T18:27:52.845Z"
     }
   ],
   "columns": [
@@ -68,6 +79,10 @@
     {
       "id": "col_3",
       "title": "Donne"
+    },
+    {
+      "id": "91ea145c-6442-4361-9cd7-8b56acec7610",
+      "title": "Bugs"
     }
   ]
 }

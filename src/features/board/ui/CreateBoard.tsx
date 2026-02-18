@@ -1,6 +1,5 @@
-import React, { useEffect, useId, useState } from "react";
-import { Button, Modal } from "antd";
-import { Input } from "@/shared/ui/input";
+import React, { useState } from "react";
+import { Modal } from "antd";
 import { createColumnRequest } from "../api/BoardApi";
 import { useBoardStore } from "../model/BoardStore";
 
