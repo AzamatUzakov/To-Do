@@ -34,12 +34,12 @@ const CreateBoard: React.FC<CreateBoardProps> = () => {
         }}
         open={isModalOpen}
       >
-        <div className="flex flex-col gap-4 w-full py-4 bg-white ">
+        <div className="flex flex-col gap-4 w-full py-4 bg-white dark:bg-transparent">
           <input
             name="title"
             onChange={(e) => setTitle(e.target.value)}
             placeholder="Название колонки"
-            className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition"
+            className="px-4 py-2 border border-gray-300 dark:border-slate-600 dark:bg-slate-800/60 dark:text-slate-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 dark:focus:ring-blue-400 dark:focus:border-blue-400 transition"
           />
           <button
             onClick={() => {

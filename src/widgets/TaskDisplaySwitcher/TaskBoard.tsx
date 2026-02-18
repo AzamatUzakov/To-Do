@@ -25,13 +25,13 @@ const TaskBoard: React.FC = () => {
             className="
               w-full
               md:flex-shrink-0 md:w-72
-              bg-white rounded-2xl shadow-sm border border-gray-200
+              bg-white dark:bg-surface-dark rounded-2xl shadow-sm border border-gray-200 dark:border-slate-800
               flex flex-col
             "
           >
             {/* Column header */}
-            <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100">
-              <h2 className="font-semibold text-gray-800 text-sm truncate">
+            <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100 dark:border-slate-800">
+              <h2 className="font-semibold text-gray-800 dark:text-slate-100 text-sm truncate">
                 {column.title}
               </h2>
               <div className="flex items-center gap-2">

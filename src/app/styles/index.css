@@ -3,6 +3,19 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* Theme как в code.html */
+@theme {
+  --color-primary: #2463eb;
+  --color-background-dark: #0f172a;
+  --color-surface-dark: #1e293b;
+  --color-background-light: #f6f6f8;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
 html,
 body,
 #root {
@@ -11,11 +24,12 @@ body,
   height: 100%;
 }
 
+/* Dark theme: как в code.html — Deep Navy #0F172A, surface #1E293B */
 .dark html,
 .dark body,
 .dark #root {
-  background: #09090b;
-  color: white;
+  background: #0f172a;
+  color: rgb(226 232 240); /* slate-200 */
 }
 :root {
   --background: 0 0% 100%;
@@ -40,26 +54,38 @@ body,
   --radius: 0.5rem;
 }
 
+/* Dark theme: как code.html — primary #2463eb, surface #1E293B */
 .dark {
-  --background: 222.2 84% 4.9%;
-  --foreground: 210 40% 98%;
-  --card: 222.2 84% 4.9%;
+  --background: 222 47% 11%;
+  --foreground: 215 20% 85%;
+  --card: 217 33% 17%;
   --card-foreground: 210 40% 98%;
-  --popover: 222.2 84% 4.9%;
+  --popover: 217 33% 17%;
   --popover-foreground: 210 40% 98%;
-  --primary: 210 40% 98%;
-  --primary-foreground: 222.2 47.4% 11.2%;
-  --secondary: 217.2 32.6% 17.5%;
+  --primary: 221 83% 53%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 215 28% 25%;
   --secondary-foreground: 210 40% 98%;
-  --muted: 217.2 32.6% 17.5%;
-  --muted-foreground: 215 20.2% 65.1%;
-  --accent: 217.2 32.6% 17.5%;
+  --muted: 215 28% 25%;
+  --muted-foreground: 215 20% 65%;
+  --accent: 215 28% 28%;
   --accent-foreground: 210 40% 98%;
-  --destructive: 0 62.8% 30.6%;
+  --destructive: 0 63% 31%;
   --destructive-foreground: 210 40% 98%;
-  --border: 217.2 32.6% 17.5%;
-  --input: 217.2 32.6% 17.5%;
-  --ring: 212.7 26.8% 83.9%;
+  --border: 215 28% 22%;
+  --input: 215 28% 22%;
+  --ring: 221 83% 53%;
+}
+
+/* Glow эффекты как в code.html */
+.task-glow-todo {
+  box-shadow: 0 0 15px -5px rgba(148, 163, 184, 0.3);
+}
+.task-glow-progress {
+  box-shadow: 0 0 15px -5px rgba(36, 99, 235, 0.4);
+}
+.task-glow-done {
+  box-shadow: 0 0 15px -5px rgba(16, 185, 129, 0.3);
 }
 
 * {

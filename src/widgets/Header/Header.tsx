@@ -29,11 +29,11 @@ const Header: React.FC<HeaderProps> = () => {
   const isOpenModalTask = useTaskStore((state) => state.isModalOpen);
 
   return (
-    <header>
+    <header className="dark:sticky dark:top-0 dark:z-50 dark:bg-background-dark/80 dark:backdrop-blur-md dark:border-b dark:border-slate-800">
       <div className="flex justify-between items-center">
         <div className="flex w-[150px] gap-2">
           <img src={logo} className="w-[30px]" alt="logo" />
-          <p className="font-bold text-[18px]">TaskFlow</p>
+          <p className="font-bold text-[18px] text-foreground">TaskFlow</p>
         </div>
         <div className="hidden md:block w-[60%]">
           <Search />
@@ -48,7 +48,7 @@ const Header: React.FC<HeaderProps> = () => {
               <SelectValue placeholder="Language" />
             </SelectTrigger>
 
-            <SelectContent className="cursor-pointer w-[40px] bg-white">
+            <SelectContent className="cursor-pointer w-[40px] bg-white dark:bg-surface-dark dark:border-slate-800">
               <SelectGroup>
                 <SelectItem
                   value="ru"
@@ -78,14 +78,14 @@ const Header: React.FC<HeaderProps> = () => {
         <div className="flex gap-3">
           <button
             onClick={openModalTask}
-            className="bg-blue-600 cursor-pointer text-white font-medium text-[12px] flex justify-center items-center gap-1 md:text-[14px] px-3 md:px-4 h-[34px] rounded-full hover:bg-blue-700 transition-colors duration-200"
+            className="bg-primary hover:bg-blue-600 cursor-pointer text-white font-medium text-[12px] flex justify-center items-center gap-1 md:text-[14px] px-3 md:px-4 h-[34px] rounded-xl hover:shadow-lg hover:shadow-primary/20 transition-all duration-200 active:scale-95"
           >
             <span className="text-xl">+</span>
             Создать задачу
           </button>
           <button
             onClick={openModalColumn}
-            className="bg-blue-600 cursor-pointer text-white font-medium text-[12px] flex justify-center items-center gap-1 md:text-[14px] px-3 md:px-4 h-[34px] rounded-full hover:bg-blue-700 transition-colors duration-200"
+            className="bg-primary hover:bg-blue-600 cursor-pointer text-white font-medium text-[12px] flex justify-center items-center gap-1 md:text-[14px] px-3 md:px-4 h-[34px] rounded-xl hover:shadow-lg hover:shadow-primary/20 transition-all duration-200 active:scale-95"
           >
             <span className="text-xl">+</span>
             Создать Колонку
