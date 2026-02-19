@@ -65,7 +65,7 @@ export const useTaskStore = create<TaskStore>((set) => ({
 
   openViewTask: (taskId: string) =>
     set({ isViewModalOpen: true, viewTaskId: taskId }),
-  closeViewTask: () => set({ isEditModalOpen: false, viewTaskId: null }),
+  closeViewTask: () => set({ isViewModalOpen: false, viewTaskId: null }),
 
   //Метод для отоброжение задачек
   fetchTasks: async () => {

@@ -1,4 +1,4 @@
-import Search from "@/features/search/Search";
+import Search from "@/features/search/ui/Search";
 import { useBoardStore } from "@/features/board/model/BoardStore";
 
 import logo from "../../shared/assets/images/logo.svg";

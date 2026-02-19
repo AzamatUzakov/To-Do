@@ -29,7 +29,6 @@ const TaskBoard: React.FC = () => {
               flex flex-col
             "
           >
-            {/* Column header */}
             <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100 dark:border-slate-800">
               <h2 className="font-semibold text-gray-800 dark:text-slate-100 text-sm truncate">
                 {column.title}
