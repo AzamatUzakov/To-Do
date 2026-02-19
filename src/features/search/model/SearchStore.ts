@@ -1,4 +1,4 @@
-import { create } from "zustand";
+/* import { create } from "zustand";
 
 interface SearchStore {
   query: string;
@@ -11,3 +11,4 @@ export const useSearchStore = create<SearchStore>((set) => ({
   setQuery: (value: string) => set({ query: value.trim() }),
   clearQuery: () => set({ query: "" }),
 }));
+ */

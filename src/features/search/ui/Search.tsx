@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { AutoComplete } from "antd";
-import { SearchOutlined, ClockCircleOutlined } from "@ant-design/icons";
+import { SearchOutlined } from "@ant-design/icons";
 import { useTaskStore } from "@/features/task/model/TaskStore";
 
 const statusConfig: Record<string, { label: string; style: string }> = {
