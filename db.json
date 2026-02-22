@@ -1,61 +1,40 @@
 {
   "tasks": [
     {
-      "id": "fac74000-ef04-45f1-aed3-bdaec26d7a6f",
-      "title": "Изучить React",
-      "description": "Прочитать мангу и документацию по React",
-      "columnId": "done",
-      "priority": "high",
-      "status": "col_2",
-      "completed": false,
-      "createdAt": "2026-02-18T17:38:55.573Z",
-      "updatedAt": "2026-02-22T09:39:59.466Z",
-      "order": 4
-    },
-    {
-      "id": "25d7f0e9-0f90-4e3a-ad38-f284019adaee",
-      "title": "dl,cklf,v",
-      "description": "wowddcfdvcdc",
-      "columnId": "col_3",
+      "id": "task_1",
+      "title": "Сделать авторизацию",
+      "description": "Реализовать login/logout",
+      "columnId": "col_1",
       "priority": "high",
       "status": "todo",
       "completed": false,
-      "createdAt": "2026-02-18T17:41:01.190Z",
-      "updatedAt": "2026-02-21T11:16:35.482Z",
-      "order": 3
-    },
-    {
-      "id": "03c92a7a-32c4-40e7-ac1f-b9ef4255d29d",
-      "title": "всвс",
-      "description": "всвс",
-      "columnId": "col_2",
-      "priority": "high",
-      "status": "in-progress",
-      "completed": false,
-      "createdAt": "2026-02-18T21:31:04.222Z",
-      "updatedAt": "2026-02-18T21:31:31.703Z",
+      "createdAt": "2026-02-22T10:00:00.000Z",
+      "updatedAt": "2026-02-22T10:00:00.000Z",
       "order": 1
     },
     {
-      "id": "6f9c5e8e-b790-40a4-8b9c-7aae5529cdb6",
-      "title": "",
-      "description": "",
-      "completed": false,
-      "createdAt": "2026-02-18T21:34:10.616Z",
-      "updatedAt": "2026-02-18T21:34:10.616Z",
-      "order": 0
-    },
-    {
-      "id": "01d3e7b7-a572-4d48-9be3-cfa71a3a2bdc",
-      "title": "dvcfvv",
-      "description": "vffbvgfb",
+      "id": "task_2",
+      "title": "Исправить баг с Drag and Drop",
+      "description": "После перетаскивания не обновляется columnId",
       "columnId": "col_2",
       "priority": "medium",
-      "status": "done",
+      "status": "in_progress",
       "completed": false,
-      "createdAt": "2026-02-21T11:23:28.861Z",
-      "updatedAt": "2026-02-21T11:23:28.861Z",
+      "createdAt": "2026-02-21T14:30:00.000Z",
+      "updatedAt": "2026-02-22T09:15:00.000Z",
       "order": 2
+    },
+    {
+      "id": "task_3",
+      "title": "Сверстать страницу профиля",
+      "description": "Добавить форму редактирования данных",
+      "columnId": "col_3",
+      "priority": "low",
+      "status": "done",
+      "completed": true,
+      "createdAt": "2026-02-20T08:00:00.000Z",
+      "updatedAt": "2026-02-21T12:00:00.000Z",
+      "order": 0
     }
   ],
   "columns": [
@@ -70,10 +49,6 @@
     {
       "id": "col_3",
       "title": "Donne"
-    },
-    {
-      "id": "91ea145c-6442-4361-9cd7-8b56acec7610",
-      "title": "Bugs"
     }
   ]
 }
