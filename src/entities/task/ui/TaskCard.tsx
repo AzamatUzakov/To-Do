@@ -16,9 +16,9 @@ interface Task {
 
 interface TaskCardProps {
   task: Task;
+  onDragStart: () => void;
 }
 
-/* Стили как в code.html */
 const priorityConfig: Record<
   string,
   { label: string; dot: string; badge: string }
@@ -43,11 +43,13 @@ const priorityConfig: Record<
   },
 };
 
-const statusConfig: Record<string, { label: string; style: string; glow?: string }> = {
+const statusConfig: Record<
+  string,
+  { label: string; style: string; glow?: string }
+> = {
   todo: {
     label: "К выполнению",
-    style:
-      "bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-400",
+    style: "bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-400",
     glow: "task-glow-todo",
   },
   "in-progress": {
@@ -71,7 +73,7 @@ function formatDate(iso?: string) {
   });
 }
 
-const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
+const TaskCard: React.FC<TaskCardProps> = ({ task, onDragStart }) => {
   const priority = priorityConfig[task.priority] ?? priorityConfig.medium;
   const status = statusConfig[task.status] ?? statusConfig.todo;
   const glowClass = status.glow ?? "";
@@ -82,6 +84,12 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
 
   return (
     <div
+      draggable={true}
+      onDragStart={(e)=>{
+        e.stopPropagation()
+        onDragStart()
+        
+      }}
       onClick={(e) => {
         e.stopPropagation();
         openViewTask(task.id);

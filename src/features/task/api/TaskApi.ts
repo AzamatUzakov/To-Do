@@ -5,6 +5,7 @@ export const createTaskRequest = async (
   columnId: string | undefined,
   priority: string | undefined,
   status: string | undefined,
+  
   // completed: boolean,
 ) => {
   const postRequest = await fetch("http://localhost:3001/tasks", {
@@ -46,7 +47,6 @@ export const deleteTasksByColumnRequest = async (columnId: string) => {
   );
 
   const tasks = await response.json();
-  console.log(tasks);
 
   for (let task of tasks) {
     await fetch(`http://localhost:3001/tasks/${task.id}`, {
@@ -96,4 +96,36 @@ export const editTaskRequest = async (
     throw new Error("Ошибка при изменении EDIT task");
   }
   return await editRequest.json();
+};
+
+//Функция для обновление id колонки
+export const updateColumnRequest = async (taskId: string, columnId: string) => {
+  const updRequest = await fetch(`http://localhost:3001/tasks/${taskId}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      columnId: columnId,
+    }),
+  });
+  if (!updRequest.ok) throw new Error("Ошибка при обновлении колонки задачи");
+  return await updRequest.json();
+};
+
+
+//Функция для обновление порядок задаек TASK
+export const updtTaskOrderRequest = async (taskId: string, order: number) => {
+  const orderRequest = await fetch(`http://localhost:3001/tasks/${taskId}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      order,
+    }),
+  });
+
+  if (!orderRequest.ok) {
+    throw new Error("Ошибка при обновлении порядка задачи");
+  }
+  return orderRequest.json();
 };

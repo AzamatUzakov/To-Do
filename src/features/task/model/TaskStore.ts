@@ -3,6 +3,8 @@ import {
   deleteTaskRequest,
   editTaskRequest,
   getTasksRequest,
+  updateColumnRequest,
+  updtTaskOrderRequest,
 } from "../api/TaskApi";
 
 interface Task {
@@ -12,6 +14,7 @@ interface Task {
   columnId: string;
   priority: string;
   status: string;
+  order?: number;
   completed?: boolean;
   createdAt?: string;
   updatedAt?: string;
@@ -46,6 +49,10 @@ interface TaskStore {
     columnId: string | undefined,
     status: string | undefined,
   ) => Promise<void>;
+
+  reorderTasks: (draggedId: string, overId: string) => Promise<void>;
+
+  updateTaskColumn: (taskId: string, columnId: string) => void;
 }
 
 export const useTaskStore = create<TaskStore>((set) => ({
@@ -71,7 +78,10 @@ export const useTaskStore = create<TaskStore>((set) => ({
   fetchTasks: async () => {
     try {
       const result = await getTasksRequest();
-      set({ tasks: result });
+      const sorted = result.sort(
+        (a: Task, b: Task) => (a.order ?? 999) - (b.order ?? 999),
+      );
+      set({ tasks: sorted });
     } catch (e) {
       console.log(e);
     }
@@ -109,5 +119,45 @@ export const useTaskStore = create<TaskStore>((set) => ({
       console.log(err);
     }
   },
+
+  //Метод для обновление id колонки, для drag and dropa
+  updateTaskColumn: async (taskId: string, columnId: string) => {
+    set((state) => ({
+      tasks: state.tasks.map((task) =>
+        task.id === taskId ? { ...task, columnId } : task,
+      ),
+    }));
+
+    try {
+      await updateColumnRequest(taskId, columnId);
+    } catch (e) {
+      console.log(e);
+    }
+  },
+
+  reorderTasks: async (draggedId, overId) => {
+    const tasks = useTaskStore.getState().tasks;
+    const result = [...tasks];
+    const fromIndex = result.findIndex((t) => t.id === draggedId);
+    const toIndex = result.findIndex((t) => t.id === overId);
+
+    const [moved] = result.splice(fromIndex, 1);
+    result.splice(toIndex, 0, moved);
+
+    const reindexed = result.map((task, i) => ({ ...task, order: i }));
+
+    set({ tasks: reindexed });
+
+    try {
+      const updts = reindexed.filter((task, i) => tasks[i]?.id !== task.id);
+      for (let task of updts) {
+        await updtTaskOrderRequest(task.id, task.order!);
+      }
+    } catch (err) {
+      console.log(err);
+      set({ tasks });
+    }
+  },
+
   addTasks: (task) => set((state) => ({ tasks: [...state.tasks, task] })),
 }));
