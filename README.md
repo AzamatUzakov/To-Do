@@ -1,73 +1,136 @@
-# React + TypeScript + Vite
+# To-Do App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Приложение для управления задачами с поддержкой досок, поиска и разных видов отображения.
 
-Currently, two official plugins are available:
+## 📋 Инструкция запуска
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Предварительные требования
+- Node.js (версия 16+)
+- npm или yarn
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Установка зависимостей
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Развитие (Development)
+Запустите два сервера в разных терминалах:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. **Vite сервер** (фронтенд на порту 5173):
+```bash
+npm run dev
 ```
+
+2. **JSON Server** (API сервер на порту 3001):
+```bash
+npm run server
+```
+
+Откройте [http://localhost:5173](http://localhost:5173) в браузере.
+
+### Сборка для продакшена
+```bash
+npm run build
+```
+
+### Превью сборки
+```bash
+npm run preview
+```
+
+### Проверка кода
+```bash
+npm run lint
+```
+
+## 🏗️ Архитектура (Feature Sliced Design)
+
+Проект структурирован по методологии **Feature Sliced Design (FSD)**, которая обеспечивает масштабируемость и удобство разработки.
+
+### Уровни архитектуры
+
+```
+src/
+├── app/              # Инициализация приложения, глобальные провайдеры
+├── pages/            # Страницы приложения
+├── widgets/          # Независимые блоки функциональности (Header, Switcher)
+├── features/         # Бизнес-функции (Board, Task, Search, Toggles)
+├── entities/         # Бизнес-сущности (Task карточка)
+├── shared/           # Переиспользуемый код (UI, утилиты, конфиг)
+└── public/           # Статические файлы
+```
+
+### Структура фичи
+
+Каждая фича следует структуре:
+- **api/** - API запросы
+- **model/** - Zustand стор (состояние)
+- **ui/** - React компоненты
+
+### Примеры
+
+#### Board фича
+- `features/board/api/BoardApi.ts` - работа с досками
+- `features/board/model/BoardStore.ts` - состояние досок
+- `features/board/ui/CreateBoard.tsx` - UI создания доски
+
+#### Task фича
+- `features/task/api/TaskApi.ts` - CRUD операции для задач
+- `features/task/model/TaskStore.ts` - состояние задач
+- `features/task/ui/` - компоненты создания, редактирования, просмотра
+
+## ✨ Реализованные функции
+
+### Управление досками
+- ✅ Создание новых досок
+- ✅ Просмотр и навигация по доскам
+
+### Управление задачами
+- ✅ Создание задач
+- ✅ Редактирование задач
+- ✅ Просмотр деталей задач
+- ✅ Удаление задач
+- ✅ Организация в колонках (доски)
+
+### Поиск и фильтрация
+- ✅ Поиск задач по названию/содержимому
+- ✅ Фильтрация по состоянию
+
+### Переключение видов
+- ✅ Вид доски (Kanban)
+- ✅ Вид списка (Table)
+- ✅ Переключение между видами
+
+### Локализация и тема
+- ✅ Поддержка множественных языков (i18next)
+- ✅ Переключение между светлой и темной темой
+- ✅ Сохранение предпочтений пользователя
+
+### UI компоненты
+- ✅ Кастомные кнопки
+- ✅ Карточки для задач
+- ✅ Input поля
+- ✅ Select списки
+- ✅ Toggle кнопки
+- ✅ Группы переключателей
+
+## 🛠️ Технологический стек
+
+- **Frontend Framework:** React 19
+- **Язык:** TypeScript
+- **Build Tool:** Vite
+- **CSS Framework:** TailwindCSS
+- **UI Components:** Radix UI, Ant Design
+- **State Management:** Zustand
+- **HTTP Client:** Axios
+- **i18n:** i18next
+- **Icons:** Lucide React, React Icons
+- **Linting:** ESLint
+
+## 📁 Основные файлы конфигурации
+
+- `vite.config.ts` - конфигурация Vite
+- `tsconfig.json` - конфигурация TypeScript
+- `tailwind.config.js` - конфигурация TailwindCSS
+- `db.json` - база данных для JSON Server
+- `components.json` - конфигурация компонентов
